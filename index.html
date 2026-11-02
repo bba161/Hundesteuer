@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>Wie viel Steuer kostet Ihr Hund im Saarland?</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --brand: #004d8b;
+      --ink: #111d29;
+      --muted: #5a6876;
+      --line: #cdd7e1;
+      --soft: #eef3f7;
+      --focus: #ffb000;
+      --bg: #fff;
+      --bar: #9fbfdc;
+      --success: #176b37;
+      --danger: #a12626;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --brand: #7ab8ea;
+        --ink: #e7eaee;
+        --muted: #a3adb8;
+        --line: #343d47;
+        --soft: #1b2127;
+        --focus: #ffc233;
+        --bg: #121417;
+        --bar: #33506b;
+        --success: #86d5a0;
+        --danger: #f0a0a0;
+      }
+    }
+    * { box-sizing: border-box; border-radius: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 400 16px/1.55 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input, select { font: inherit; }
+    button { color: inherit; }
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+    .page { width: min(100% - 40px, 1040px); margin-inline: auto; }
+    .masthead { border-bottom: 1px solid var(--line); }
+    .masthead-inner { min-height: 54px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand-mark { display: inline-flex; align-items: center; gap: 10px; color: var(--brand); font-weight: 750; font-size: .82rem; letter-spacing: .04em; text-transform: uppercase; }
+    .brand-mark svg { width: 22px; height: 22px; }
+    .edition { color: var(--muted); font-size: .78rem; }
+    main { padding-block: clamp(30px, 6vw, 66px) 54px; }
+    .eyebrow { margin: 0 0 10px; color: var(--muted); font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 820px; margin-bottom: 12px; color: var(--brand); font-size: clamp(2.15rem, 5vw, 3.5rem); line-height: 1.07; letter-spacing: -.045em; font-weight: 800; }
+    .dek { max-width: 700px; margin-bottom: 32px; color: var(--muted); font-size: 1.05rem; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr); max-width: 620px; gap: clamp(28px, 6vw, 76px); align-items: start; }
+    .form-panel { border-top: 4px solid var(--brand); padding-top: 21px; }
+    .section-title { margin: 0 0 5px; color: var(--brand); font-size: 1.15rem; font-weight: 750; }
+    .section-hint { color: var(--muted); margin: 0 0 22px; font-size: .9rem; }
+    .field { margin-bottom: 20px; }
+    .field label { display: block; margin-bottom: 7px; font-size: .9rem; font-weight: 650; }
+    .field input, .field select { display: block; width: 100%; min-height: 50px; padding: 10px 12px; color: var(--ink); background: var(--bg); border: 1px solid #9fb0c0; }
+    .field input::placeholder { color: var(--muted); opacity: 1; }
+    .field input:focus, .field select:focus { border-color: var(--brand); }
+    .search-wrap { position: relative; }
+    .suggestions { position: absolute; z-index: 5; top: calc(100% + 2px); inset-inline: 0; max-height: 260px; overflow-y: auto; padding: 4px 0; margin: 0; list-style: none; background: var(--bg); border: 1px solid var(--line); box-shadow: 0 8px 18px rgb(17 29 41 / .12); }
+    .suggestions[hidden] { display: none; }
+    .suggestions button { display: block; width: 100%; padding: 9px 12px; text-align: left; border: 0; background: transparent; cursor: pointer; }
+    .suggestions button:hover, .suggestions button:focus-visible { background: var(--soft); }
+    .no-results { padding: 10px 12px; color: var(--muted); font-size: .9rem; }
+    .hintline { min-height: 20px; margin: 6px 0 0; color: var(--muted); font-size: .8rem; }
+    .primary-button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 11px 18px; border: 2px solid var(--brand); background: var(--brand); color: #fff; font-weight: 700; cursor: pointer; transition: background .16s ease, color .16s ease; }
+    .primary-button:hover:not(:disabled) { background: transparent; color: var(--brand); }
+    .primary-button:disabled { opacity: .48; cursor: not-allowed; }
+    .primary-button svg { width: 17px; height: 17px; }
+    .note-panel { padding: 17px 18px 18px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--soft); }
+    .note-panel h2 { margin-bottom: 11px; color: var(--brand); font-size: .95rem; }
+    .fact-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .fact strong { display: block; color: var(--brand); font-size: 1.35rem; line-height: 1.1; }
+    .fact span { display: block; margin-top: 4px; color: var(--muted); font-size: .78rem; }
+    .note-copy { margin: 17px 0 0; color: var(--muted); font-size: .84rem; }
+    .divider { margin-block: 34px 18px; border: 0; border-top: 1px solid var(--line); }
+    .footnote { max-width: 760px; margin: 0; color: var(--muted); font-size: .8rem; }
+    .result-top { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+    .back-button { display: inline-flex; align-items: center; gap: 7px; padding: 7px 0; border: 0; border-bottom: 1px solid var(--line); background: transparent; color: var(--brand); font-weight: 650; cursor: pointer; }
+    .result-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 5vw, 50px); align-items: start; }
+    .result-heading { padding-bottom: 0; border-bottom: 0; }
+    .result-heading h1 { font-size: clamp(2rem, 4.4vw, 3.15rem); margin-bottom: 8px; }
+    .total-box { margin-top: 25px; padding: 8px 0 20px; border: 0; }
+    .total-main { min-width: 0; }
+    .total-amount { display: block; color: var(--brand); font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; letter-spacing: -.055em; line-height: 1.05; font-variant-numeric: tabular-nums; }
+    .total-period { margin: 8px 0 0; color: var(--muted); font-size: .88rem; }
+    .rank-box { display: grid; gap: 2px; margin-top: 7px; text-align: left; }
+    .rank-value { color: var(--brand); font-size: 1rem; font-weight: 750; line-height: 1.3; font-variant-numeric: tabular-nums; }
+    .rank-note { color: var(--muted); font-size: .8rem; line-height: 1.35; }
+    .breakdown { margin-top: 24px; }
+    .breakdown h2, .chart-panel h2 { margin-bottom: 4px; color: var(--brand); font-size: 1.08rem; }
+    .breakdown-intro, .chart-intro { margin-bottom: 16px; color: var(--muted); font-size: .85rem; }
+    .rate-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+    .rate-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 15px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: .9rem; }
+    .rate-list li span:first-child { color: var(--muted); }
+    .rate-list strong { font-variant-numeric: tabular-nums; }
+    .chart-panel { padding-top: 0; }
+    .chart-frame { padding: 20px 18px 16px; border-top: 4px solid var(--brand); background: var(--soft); }
+    .chart-rows { display: grid; gap: 11px; max-height: 280px; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; padding-right: 5px; scrollbar-gutter: stable; scrollbar-color: var(--muted) var(--soft); }
+    .chart-controls { display: flex; flex-wrap: wrap; gap: 0; margin: 16px 0 10px; border: 1px solid var(--brand); width: fit-content; max-width: 100%; }
+    .dog-tab { min-height: 42px; padding: 8px 15px; border: 0; border-right: 1px solid var(--brand); background: var(--bg); color: var(--brand); font-size: .88rem; font-weight: 700; cursor: pointer; }
+    .dog-tab:last-child { border-right: 0; }
+    .dog-tab[aria-pressed="true"] { background: var(--brand); color: #fff; }
+    .compare-row { display: block; padding: 6px 8px 7px; border-left: 3px solid transparent; }
+    .compare-row.is-selected { border-left-color: var(--brand); background: var(--bg); }
+    .compare-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 4px; font-size: .82rem; }
+    .compare-name { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .compare-row.is-selected .compare-name { color: var(--brand); font-weight: 750; }
+    .compare-value { flex: none; font-size: .82rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+    .compare-row .bar-track { height: 9px; }
+    .compare-row .bar-fill { background: var(--bar); }
+    .compare-row.is-selected .bar-fill { background: var(--brand); }
+    .chart-row { display: block; width: 100%; padding: 0; border: 0; background: transparent; text-align: left; cursor: pointer; }
+    .chart-row:focus-visible { outline-offset: 5px; }
+    .chart-row-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 6px; font-size: .9rem; }
+    .chart-row-label { font-weight: 650; }
+    .chart-row-value { font-weight: 750; font-variant-numeric: tabular-nums; }
+    .bar-track { display: block; height: 14px; background: var(--bg); border: 1px solid var(--line); }
+    .bar-fill { display: block; height: 100%; width: 0; background: var(--bar); transition: width .3s ease, background .18s ease; }
+    .chart-row[aria-pressed="true"] .bar-fill { background: var(--brand); }
+    .chart-row[aria-pressed="true"] .chart-row-label { color: var(--brand); }
+    .chart-row:hover .bar-fill { filter: brightness(.9); }
+    .chart-axis { display: flex; justify-content: space-between; margin-top: 9px; padding-top: 7px; border-top: 1px solid var(--line); color: var(--muted); font-size: .73rem; }
+    .chart-caption { margin: 14px 0 0; color: var(--muted); font-size: .78rem; }
+    .chart-alt { margin: 15px 0 0; padding: 12px 13px; border-left: 3px solid var(--brand); background: var(--bg); font-size: .85rem; }
+    .chart-alt strong { color: var(--brand); }
+    .small-print { margin-top: 32px; padding-top: 13px; border-top: 1px solid var(--line); color: var(--muted); font-size: .78rem; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    [hidden] { display: none !important; }
+    @media (max-width: 700px) {
+      .page { width: min(100% - 32px, 1040px); }
+      .masthead-inner { min-height: 48px; gap: 10px; }
+      .brand-mark { gap: 7px; font-size: .75rem; }
+      .brand-mark svg { width: 19px; height: 19px; }
+      .edition { max-width: 42%; font-size: .68rem; line-height: 1.2; }
+      h1 { font-size: clamp(2rem, 9.5vw, 2.7rem); }
+      .dek { margin-bottom: 24px; font-size: .96rem; }
+      .layout, .result-layout { grid-template-columns: 1fr; gap: 28px; }
+      .form-panel { padding-top: 17px; }
+      .field { margin-bottom: 16px; }
+      .field input, .field select { min-height: 52px; font-size: 16px; }
+      .primary-button { width: 100%; min-height: 52px; }
+      .result-top { margin-bottom: 17px; }
+      .result-layout { gap: 30px; }
+      .total-box { margin-top: 19px; }
+      .total-amount { font-size: clamp(2rem, 8vw, 3.1rem); }
+      .rank-value { font-size: .95rem; }
+      .rank-note { font-size: .76rem; }
+      .chart-frame { padding: 16px 12px 14px; }
+      .chart-controls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; }
+      .dog-tab { min-height: 46px; padding: 8px 5px; font-size: .85rem; }
+      .chart-intro { font-size: .82rem; }
+      .chart-rows { max-height: 255px; gap: 9px; }
+      .compare-row { padding: 5px 6px 6px; }
+      .compare-top { gap: 8px; margin-bottom: 3px; font-size: .8rem; }
+      .compare-value { font-size: .8rem; }
+      main { padding-top: 30px; }
+    }
+    @media (max-width: 420px) {
+      .page { width: min(100% - 26px, 1040px); }
+      .edition { font-size: .65rem; }
+      .chart-frame { padding-inline: 11px; }
+      .chart-controls { margin-top: 14px; }
+      .chart-alt { font-size: .8rem; }
+      .small-print { font-size: .74rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="page">
+    <section id="startView" aria-labelledby="mainTitle">
+      <h1 id="mainTitle">Wie viel Steuer kostet Ihr Hund im Saarland?</h1>
+      <p class="dek">Finden Sie heraus, in welcher Gemeinde im Saarland Sie die niedrigste Steuer für Ihren Hund zahlen – oder für Ihre Hunde.</p>
+
+      <div class="layout">
+        <form class="form-panel" id="searchForm" novalidate>
+          <div class="field">
+            <label for="municipalityInput">Ort oder Gemeinde</label>
+            <div class="search-wrap">
+              <input id="municipalityInput" type="search" placeholder="Zum Beispiel: Saarbrücken" autocomplete="off" aria-autocomplete="list" aria-controls="suggestions" aria-expanded="false" aria-describedby="municipalityHint" required>
+              <ul class="suggestions" id="suggestions" aria-label="Gemeinden" hidden></ul>
+            </div>
+            <p class="hintline" id="municipalityHint" aria-live="polite">Ort eintippen und einen Vorschlag auswählen.</p>
+          </div>
+          <div class="field">
+            <label for="dogCount">Anzahl der Hunde</label>
+            <input id="dogCount" name="dogCount" type="number" min="1" step="1" value="1" inputmode="numeric" required>
+          </div>
+          <button class="primary-button" id="calculateButton" type="submit" disabled>
+            Steuer berechnen
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 10h13m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/></svg>
+          </button>
+        </form>
+
+      </div>
+
+    </section>
+
+    <section id="resultView" aria-labelledby="resultTitle" hidden>
+      <div class="result-top">
+        <button class="back-button" id="backButton" type="button">
+          <svg viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true"><path d="M17 10H4m5 5-5-5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/></svg>
+          Suche ändern
+        </button>
+      </div>
+      <div class="result-heading">
+        <h1 id="resultTitle">Jahresbetrag</h1>
+      </div>
+
+      <div class="result-layout">
+        <section aria-label="Berechneter Betrag">
+          <div class="total-box" aria-live="polite">
+            <div class="total-main">
+              <strong class="total-amount" id="totalAmount">–</strong>
+              <p class="total-period" id="totalPeriod">im Jahr</p>
+              <div class="rank-box" aria-live="polite">
+                <strong class="rank-value" id="rankValue">Platz – von 52 bei den Gemeinden mit der günstigsten Hundesteuer im Saarland.</strong>
+              </div>
+            </div>
+          </div>
+          <div class="breakdown">
+            <h2>So setzt sich der Betrag zusammen</h2>
+            <p class="breakdown-intro" id="breakdownIntro"></p>
+            <ul class="rate-list" id="rateList"></ul>
+          </div>
+        </section>
+
+        <section class="chart-panel" aria-labelledby="chartTitle">
+          <div class="chart-frame">
+            <h2 id="chartTitle">Hundesteuer in allen Gemeinden</h2>
+            <div class="chart-controls" role="group" aria-label="Anzahl der Hunde im Vergleich">
+              <button type="button" class="dog-tab" data-chart-count="1" aria-pressed="true">1 Hund</button>
+              <button type="button" class="dog-tab" data-chart-count="2" aria-pressed="false">2 Hunde</button>
+              <button type="button" class="dog-tab" data-chart-count="3" aria-pressed="false">3 Hunde</button>
+            </div>
+            <p class="chart-intro">Jahressteuer aller 52 Gemeinden, von der günstigsten zur teuersten sortiert. Scrollen Sie in der Liste für weitere Gemeinden; Ihre Gemeinde ist hervorgehoben.</p>
+            <div class="chart-rows" id="chartRows" role="list" aria-label="Gemeinden nach jährlicher Hundesteuer" tabindex="0"></div>
+          </div>
+        </section>
+      </div>
+      <p class="small-print">Quelle: Mitteilungen der Saar-Kommunen auf SZ-Anfrage.</p>
+    </section>
+  </main>
+
+  <script>
+    const municipalities = [
+      { name: "Friedrichsthal", rates: [96, 192, 288], totals: [96, 288, 576] },
+      { name: "Beckingen", rates: [110, 170, 230], totals: [110, 280, 510] },
+      { name: "Perl", rates: [80, 160, 240], totals: [80, 240, 480] },
+      { name: "Weiskirchen", rates: [96, 138, 234], totals: [96, 234, 468] },
+      { name: "Saarbrücken", rates: [120, 168, 168], totals: [120, 288, 456] },
+      { name: "Quierschied", rates: [72, 144, 240], totals: [72, 216, 456] },
+      { name: "Völklingen", rates: [96, 144, 210], totals: [96, 240, 450] },
+      { name: "Wadern", rates: [72, 120, 240], totals: [72, 192, 432] },
+      { name: "Nalbach", rates: [78, 156, 196], totals: [78, 234, 430] },
+      { name: "Merzig", rates: [69, 138, 207], totals: [69, 207, 414] },
+      { name: "Mettlach", rates: [70, 110, 210], totals: [70, 180, 390] },
+      { name: "Schmelz", rates: [84, 120, 180], totals: [84, 204, 384] },
+      { name: "St. Wendel", rates: [84, 124, 173], totals: [84, 208, 381] },
+      { name: "Großrosseln", rates: [100, 120, 160], totals: [100, 220, 380] },
+      { name: "Blieskastel", rates: [90, 120, 168], totals: [90, 210, 378] },
+      { name: "Überherrn", rates: [65, 120, 180], totals: [65, 185, 365] },
+      { name: "Homburg", rates: [96, 120, 144], totals: [96, 216, 360] },
+      { name: "Sulzbach/Saar", rates: [72, 144, 144], totals: [72, 216, 360] },
+      { name: "Kleinblittersdorf", rates: [60, 125, 175], totals: [60, 185, 360] },
+      { name: "Schiffweiler", rates: [60, 120, 180], totals: [60, 180, 360] },
+      { name: "Rehlingen-Siersburg", rates: [60, 120, 180], totals: [60, 180, 360] },
+      { name: "Wadgassen", rates: [60, 120, 180], totals: [60, 180, 360] },
+      { name: "Gersheim", rates: [80, 110, 165], totals: [80, 190, 355] },
+      { name: "Schwalbach", rates: [75, 110, 170], totals: [75, 185, 355] },
+      { name: "Ensdorf", rates: [75, 105, 175], totals: [75, 180, 355] },
+      { name: "St. Ingbert", rates: [84, 114, 156], totals: [84, 198, 354] },
+      { name: "Lebach", rates: [78, 120, 156], totals: [78, 198, 354] },
+      { name: "Riegelsberg", rates: [81, 120, 141], totals: [81, 201, 342] },
+      { name: "Mandelbachtal", rates: [75, 110, 145], totals: [75, 185, 330] },
+      { name: "Heusweiler", rates: [66, 108, 156], totals: [66, 174, 330] },
+      { name: "Ottweiler", rates: [73.2, 109.8, 146.4], totals: [73.2, 183, 329.4] },
+      { name: "Neunkirchen", rates: [84, 108, 132], totals: [84, 192, 324] },
+      { name: "Kirkel", rates: [72, 108, 144], totals: [72, 180, 324] },
+      { name: "Oberthal", rates: [72, 108, 132], totals: [72, 180, 312] },
+      { name: "Nohfelden", rates: [60, 102, 144], totals: [60, 162, 306] },
+      { name: "Merchweiler", rates: [72, 108, 120], totals: [72, 180, 300] },
+      { name: "Saarlouis", rates: [60, 90, 150], totals: [60, 150, 300] },
+      { name: "Saarwellingen", rates: [60, 90, 150], totals: [60, 150, 300] },
+      { name: "Freisen", rates: [50, 100, 150], totals: [50, 150, 300] },
+      { name: "Bexbach", rates: [72, 96, 120], totals: [72, 168, 288] },
+      { name: "Losheim am See", rates: [60, 114, 114], totals: [60, 174, 288] },
+      { name: "Bous", rates: [60, 84, 144], totals: [60, 144, 288] },
+      { name: "Eppelborn", rates: [69, 96, 120], totals: [69, 165, 285] },
+      { name: "Namborn", rates: [63, 94, 125], totals: [63, 157, 282] },
+      { name: "Püttlingen", rates: [60, 90, 120], totals: [60, 150, 270] },
+      { name: "Spiesen-Elversberg", rates: [72, 84, 96], totals: [72, 156, 252] },
+      { name: "Nonnweiler", rates: [60, 84, 108], totals: [60, 144, 252] },
+      { name: "Tholey", rates: [60, 84, 108], totals: [60, 144, 252] },
+      { name: "Marpingen", rates: [54, 78, 96], totals: [54, 132, 228] },
+      { name: "Dillingen/Saar", rates: [72, 72, 72], totals: [72, 144, 216] },
+      { name: "Illingen", rates: [68, 68, 68], totals: [68, 136, 204] },
+      { name: "Wallerfangen", rates: [66, 66, 66], totals: [66, 132, 198] }
+    ];
+
+    const input = document.getElementById('municipalityInput');
+    const suggestions = document.getElementById('suggestions');
+    const countSelect = document.getElementById('dogCount');
+    const submitButton = document.getElementById('calculateButton');
+    const hint = document.getElementById('municipalityHint');
+    const startView = document.getElementById('startView');
+    const resultView = document.getElementById('resultView');
+    let selectedMunicipality = null;
+    let activeChartCount = 1;
+    let enteredDogCount = 1;
+
+    const euro = value => new Intl.NumberFormat('de-DE', { maximumFractionDigits: 2 }).format(value) + '€';
+    const totalFor = (item, count) => count <= 3 ? item.totals[count - 1] : item.rates[0] + item.rates[1] + (count - 2) * item.rates[2];
+    const normalize = value => value.toLocaleLowerCase('de-DE').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ß/g, 'ss').replace(/[\s/,-]+/g, ' ').trim();
+
+    function closeSuggestions() {
+      suggestions.hidden = true;
+      input.setAttribute('aria-expanded', 'false');
+    }
+
+    function chooseMunicipality(municipality) {
+      selectedMunicipality = municipality;
+      input.value = municipality.name;
+      hint.textContent = municipality.name + ' ausgewählt.';
+      hint.style.color = '';
+      submitButton.disabled = false;
+      closeSuggestions();
+    }
+
+    function showSuggestions() {
+      const query = normalize(input.value);
+      selectedMunicipality = null;
+      submitButton.disabled = true;
+      hint.textContent = query ? 'Wählen Sie einen Ort aus der Trefferliste.' : 'Ort eintippen und einen Vorschlag auswählen.';
+      hint.style.color = '';
+      suggestions.replaceChildren();
+      if (!query) {
+        closeSuggestions();
+        return;
+      }
+      const matches = municipalities.filter(item => normalize(item.name).includes(query)).slice(0, 10);
+      if (matches.length === 0) {
+        const empty = document.createElement('li');
+        empty.className = 'no-results';
+        empty.textContent = 'Keine Gemeinde mit diesem Namen gefunden.';
+        suggestions.append(empty);
+      } else {
+        for (const municipality of matches) {
+          const item = document.createElement('li');
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.textContent = municipality.name;
+          button.addEventListener('click', () => chooseMunicipality(municipality));
+          item.append(button);
+          suggestions.append(item);
+        }
+      }
+      suggestions.hidden = false;
+      input.setAttribute('aria-expanded', 'true');
+    }
+
+    input.addEventListener('input', showSuggestions);
+    input.addEventListener('focus', () => { if (input.value && !selectedMunicipality) showSuggestions(); });
+    input.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeSuggestions();
+      if (event.key === 'ArrowDown' && !suggestions.hidden) {
+        const first = suggestions.querySelector('button');
+        if (first) { event.preventDefault(); first.focus(); }
+      }
+      if (event.key === 'Enter' && !suggestions.hidden) {
+        const exact = municipalities.find(item => normalize(item.name) === normalize(input.value));
+        if (exact) { event.preventDefault(); chooseMunicipality(exact); }
+      }
+    });
+    suggestions.addEventListener('keydown', event => {
+      if (event.key === 'Escape') { closeSuggestions(); input.focus(); }
+    });
+    document.addEventListener('click', event => {
+      if (!event.target.closest('.search-wrap')) closeSuggestions();
+    });
+
+    function updateResult(count) {
+      enteredDogCount = count;
+      activeChartCount = Math.min(count, 3);
+      const item = selectedMunicipality;
+      const total = totalFor(item, count);
+      document.getElementById('resultTitle').textContent = 'Hundesteuer in ' + item.name;
+      document.getElementById('totalAmount').textContent = euro(total);
+      document.getElementById('totalPeriod').textContent = 'im Jahr';
+      const rank = 1 + municipalities.filter(candidate => totalFor(candidate, count) < total - 1e-9).length;
+      document.getElementById('rankValue').textContent = 'Platz ' + rank + ' von 52 bei den Gemeinden mit der günstigsten Hundesteuer im Saarland.';
+      document.getElementById('breakdownIntro').textContent = count > 3
+        ? 'Ab dem dritten Hund wird dessen Satz für jeden weiteren Hund erneut angesetzt.'
+        : count === 1 ? 'Der Satz für den ersten Hund.' : 'Die Sätze für die ausgewählte Anzahl Hunde ergeben zusammen den Gesamtbetrag.';
+
+      const rateList = document.getElementById('rateList');
+      rateList.replaceChildren();
+      const addRateRow = (labelText, amount) => {
+        const li = document.createElement('li');
+        const label = document.createElement('span');
+        const value = document.createElement('strong');
+        label.textContent = labelText;
+        value.textContent = euro(amount);
+        li.append(label, value);
+        rateList.append(li);
+      };
+      addRateRow('1. Hund', item.rates[0]);
+      if (count >= 2) addRateRow('2. Hund', item.rates[1]);
+      if (count >= 3) addRateRow('3. Hund', item.rates[2]);
+      if (count > 3) addRateRow('4. bis ' + count + '. Hund (Satz des 3.)', (count - 3) * item.rates[2]);
+
+      document.querySelectorAll('.dog-tab').forEach(button => {
+        button.setAttribute('aria-pressed', String(Number(button.dataset.chartCount) === activeChartCount));
+      });
+      renderComparisonChart();
+      document.title = 'Hundesteuer in ' + item.name + ' | Saarland';
+    }
+
+    function renderComparisonChart() {
+      if (!selectedMunicipality) return;
+      const count = activeChartCount;
+      const sorted = municipalities.map(item => ({ item, amount: totalFor(item, count) }))
+        .sort((a, b) => a.amount - b.amount || a.item.name.localeCompare(b.item.name, 'de'));
+      const maxTotal = sorted[sorted.length - 1].amount;
+      const rows = document.getElementById('chartRows');
+      rows.replaceChildren();
+      sorted.forEach(({ item, amount }, index) => {
+        const row = document.createElement('div');
+        const isSelected = item.name === selectedMunicipality.name;
+        row.className = 'compare-row' + (isSelected ? ' is-selected' : '');
+        row.setAttribute('role', 'listitem');
+        const top = document.createElement('div');
+        top.className = 'compare-top';
+        const name = document.createElement('span');
+        name.className = 'compare-name';
+        name.textContent = (index + 1) + '. ' + item.name + (isSelected ? ' — Ihre Gemeinde' : '');
+        const value = document.createElement('strong');
+        value.className = 'compare-value';
+        value.textContent = euro(amount);
+        top.append(name, value);
+        const track = document.createElement('span');
+        track.className = 'bar-track';
+        track.setAttribute('aria-hidden', 'true');
+        const fill = document.createElement('span');
+        fill.className = 'bar-fill';
+        fill.style.width = (amount / maxTotal * 100) + '%';
+        track.append(fill);
+        row.append(top, track);
+        rows.append(row);
+      });
+    }
+
+    document.querySelectorAll('.dog-tab').forEach(button => {
+      button.addEventListener('click', () => {
+        activeChartCount = Number(button.dataset.chartCount);
+        document.querySelectorAll('.dog-tab').forEach(tab => tab.setAttribute('aria-pressed', String(tab === button)));
+        renderComparisonChart();
+      });
+    });
+
+
+    document.getElementById('searchForm').addEventListener('submit', event => {
+      event.preventDefault();
+      if (!selectedMunicipality) {
+        hint.textContent = 'Bitte wählen Sie zuerst eine Gemeinde aus der Vorschlagsliste.';
+        hint.style.color = 'var(--danger)';
+        input.focus();
+        return;
+      }
+      const count = Number(countSelect.value);
+      if (!Number.isSafeInteger(count) || count < 1) {
+        countSelect.setCustomValidity('Bitte geben Sie mindestens einen Hund an.');
+        countSelect.reportValidity();
+        countSelect.focus();
+        return;
+      }
+      countSelect.setCustomValidity('');
+      startView.hidden = true;
+      resultView.hidden = false;
+      updateResult(count);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.getElementById('backButton').focus();
+    });
+
+    document.getElementById('backButton').addEventListener('click', () => {
+      resultView.hidden = true;
+      startView.hidden = false;
+      document.title = 'Wie viel Steuer kostet Ihr Hund im Saarland?';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      input.focus();
+    });
+  </script>
+</body>
+</html>
