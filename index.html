@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <meta name="theme-color" content="#ffffff">
   <title>Wie teuer ist Ihre Hundesteuer im Saarland-Vergleich?</title>
   <style>
@@ -48,7 +51,7 @@
     .page { width: min(100% - 40px, 1040px); margin-inline: auto; }
     .masthead { border-bottom: 1px solid var(--line); }
     .masthead-inner { min-height: 54px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .brand-mark { display: inline-flex; align-items: center; gap: 10px; color: var(--brand); font-weight: 750; font-size: .82rem; letter-spacing: .04em; text-transform: uppercase; }
+    .brand-mark { display: inline-flex; align-items: center; gap: 10px; color: var(--brand); font-weight: 700; font-size: .82rem; letter-spacing: .04em; text-transform: uppercase; }
     .brand-mark svg { width: 22px; height: 22px; }
     .edition { color: var(--muted); font-size: .78rem; }
     main { padding-block: clamp(30px, 6vw, 66px) 54px; }
@@ -58,10 +61,10 @@
     .dek { max-width: 700px; margin-bottom: 32px; color: var(--muted); font-size: 1.05rem; }
     .layout { display: grid; grid-template-columns: minmax(0, 1fr); max-width: 620px; gap: clamp(28px, 6vw, 76px); align-items: start; }
     .form-panel { border-top: 4px solid var(--brand); padding-top: 21px; }
-    .section-title { margin: 0 0 5px; color: var(--brand); font-size: 1.15rem; font-weight: 750; }
+    .section-title { margin: 0 0 5px; color: var(--brand); font-size: 1.15rem; font-weight: 700; }
     .section-hint { color: var(--muted); margin: 0 0 22px; font-size: .9rem; }
     .field { margin-bottom: 20px; }
-    .field label { display: block; margin-bottom: 7px; font-size: .9rem; font-weight: 650; }
+    .field label { display: block; margin-bottom: 7px; font-size: .9rem; font-weight: 600; }
     .field input, .field select { display: block; width: 100%; min-height: 50px; padding: 10px 12px; color: var(--ink); background: var(--bg); border: 1px solid #9fb0c0; }
     .field input::placeholder { color: var(--muted); opacity: 1; }
     .field input:focus, .field select:focus { border-color: var(--brand); }
@@ -85,16 +88,16 @@
     .divider { margin-block: 34px 18px; border: 0; border-top: 1px solid var(--line); }
     .footnote { max-width: 760px; margin: 0; color: var(--muted); font-size: .8rem; }
     .result-top { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
-    .back-button { display: inline-flex; align-items: center; gap: 7px; padding: 7px 0; border: 0; border-bottom: 1px solid var(--line); background: transparent; color: var(--brand); font-weight: 650; cursor: pointer; }
+    .back-button { display: inline-flex; align-items: center; gap: 7px; padding: 7px 0; border: 0; border-bottom: 1px solid var(--line); background: transparent; color: var(--brand); font-weight: 600; cursor: pointer; }
     .result-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 5vw, 50px); align-items: start; }
     .result-heading { padding-bottom: 0; border-bottom: 0; }
     .result-heading h1 { font-size: clamp(2rem, 4.4vw, 3.15rem); margin-bottom: 8px; }
     .total-box { margin-top: 25px; padding: 8px 0 20px; border: 0; }
     .total-main { min-width: 0; }
     .total-amount { display: block; color: var(--brand); font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; letter-spacing: -.055em; line-height: 1.05; font-variant-numeric: tabular-nums; }
-    .total-period { margin: 8px 0 0; color: var(--muted); font-size: .88rem; }
+    .total-period { margin: 4px 0 0; color: var(--brand); font-size: 1rem; font-weight: 500; line-height: 1.4; }
     .rank-box { display: grid; gap: 2px; margin-top: 7px; text-align: left; }
-    .rank-value { color: var(--brand); font-size: 1rem; font-weight: 750; line-height: 1.3; font-variant-numeric: tabular-nums; }
+    .rank-value { color: var(--brand); font-size: 1rem; font-weight: 700; line-height: 1.3; font-variant-numeric: tabular-nums; }
     .rank-note { color: var(--muted); font-size: .8rem; line-height: 1.35; }
     .breakdown { margin-top: 24px; }
     .breakdown h2, .chart-panel h2 { margin-bottom: 4px; color: var(--brand); font-size: 1.08rem; }
@@ -114,7 +117,7 @@
     .compare-row.is-selected { border-left-color: var(--brand); background: var(--bg); }
     .compare-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 4px; font-size: .82rem; }
     .compare-name { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-    .compare-row.is-selected .compare-name { color: var(--brand); font-weight: 750; }
+    .compare-row.is-selected .compare-name { color: var(--brand); font-weight: 700; }
     .compare-value { flex: none; font-size: .82rem; font-weight: 700; font-variant-numeric: tabular-nums; }
     .compare-row .bar-track { height: 9px; }
     .compare-row .bar-fill { background: var(--bar); }
@@ -122,8 +125,8 @@
     .chart-row { display: block; width: 100%; padding: 0; border: 0; background: transparent; text-align: left; cursor: pointer; }
     .chart-row:focus-visible { outline-offset: 5px; }
     .chart-row-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 6px; font-size: .9rem; }
-    .chart-row-label { font-weight: 650; }
-    .chart-row-value { font-weight: 750; font-variant-numeric: tabular-nums; }
+    .chart-row-label { font-weight: 600; }
+    .chart-row-value { font-weight: 700; font-variant-numeric: tabular-nums; }
     .bar-track { display: block; height: 14px; background: var(--bg); border: 1px solid var(--line); }
     .bar-fill { display: block; height: 100%; width: 0; background: var(--bar); transition: width .3s ease, background .18s ease; }
     .chart-row[aria-pressed="true"] .bar-fill { background: var(--brand); }
@@ -182,7 +185,7 @@
 
   <main class="page">
     <section id="startView" aria-labelledby="mainTitle">
-      <h1 id="mainTitle">Wie viel Steuer kostet Ihr Hund im Saarland?</h1>
+      <h1 id="mainTitle">Wie teuer ist Ihre Hundesteuer im Saarland-Vergleich?</h1>
       <p class="dek">Finden Sie heraus, in welcher Gemeinde im Saarland Sie die niedrigste Steuer für Ihren Hund zahlen – oder für Ihre Hunde.</p>
 
       <div class="layout">
@@ -417,10 +420,10 @@
         li.append(label, value);
         rateList.append(li);
       };
-      addRateRow('1. Hund', item.rates[0]);
-      if (count >= 2) addRateRow('2. Hund', item.rates[1]);
-      if (count >= 3) addRateRow('3. Hund', item.rates[2]);
-      if (count > 3) addRateRow('4. bis ' + count + '. Hund (Satz des 3.)', (count - 3) * item.rates[2]);
+      addRateRow('Erster Hund', item.rates[0]);
+      if (count >= 2) addRateRow('Zweiter Hund', item.rates[1]);
+      if (count >= 3) addRateRow('Dritter Hund', item.rates[2]);
+      if (count > 3) addRateRow(count === 4 ? 'Vierter Hund' : 'Vierter und weitere Hunde', (count - 3) * item.rates[2]);
 
       document.querySelectorAll('.dog-tab').forEach(button => {
         button.setAttribute('aria-pressed', String(Number(button.dataset.chartCount) === activeChartCount));
@@ -498,7 +501,7 @@
     document.getElementById('backButton').addEventListener('click', () => {
       resultView.hidden = true;
       startView.hidden = false;
-      document.title = 'Wie viel Steuer kostet Ihr Hund im Saarland?';
+      document.title = 'Wie teuer ist Ihre Hundesteuer im Saarland-Vergleich?';
       window.scrollTo({ top: 0, behavior: 'smooth' });
       input.focus();
     });
